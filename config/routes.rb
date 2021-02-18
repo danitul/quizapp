@@ -7,8 +7,8 @@ Rails.application.routes.draw do
         put 'answer/:answer_id', to: 'questions#update'
       end
       namespace :admins do
-        resources :question, only: [:create, :update], controller: 'admins/questions'
-        resources :users, only: [:index], controller: 'admins/users'
+        resources :questions, only: [:create, :update]
+        resources :users, only: [:index]
       end
     end
   end

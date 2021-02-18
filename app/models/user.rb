@@ -25,4 +25,9 @@ class User < ApplicationRecord
     questions_left_to_answer = all_questions_indexed.keys - user_answered_questions
     all_questions_indexed[questions_left_to_answer.first]
   end
+
+  # TODO: this will need to be refactored with user roles for example. I chose a simplistic way for time constraints
+  def is_admin?
+    self.is_admin == "t"
+  end
 end

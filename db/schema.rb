@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_000917) do
     t.string "uid"
     t.string "email"
     t.string "password"
+    t.string "is_admin", default: "f"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["uid"], name: "index_users_on_uid", unique: true

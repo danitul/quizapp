@@ -82,49 +82,5 @@ class Api::V1::QuestionsControllerTest < ActionDispatch::IntegrationTest
         assert_equal expected_response, json['errors']
       end
     end
-=begin
-    describe 'update existing workout' do
-
-      it 'should update an existing workout successfully' do
-        put "#{trainer_url}/#{@workout.id}", params: { workout: @params }
-
-        assert_response 200
-        json = JSON.parse(@response.body)
-
-        workout = Workout.find(@workout.id)
-        assert_equal json['id'], workout.id
-        assert_equal @params[:name], workout.name
-        assert_equal trainer.full_name, workout.creator
-        assert_equal workout.duration, json['duration']
-        assert_equal workout.state, json['state']
-        assert_equal trainer.id, json['trainer_id']
-        assert_nil json['trainee_id']
-        assert_equal 1, workout.exercises.count
-        assert_equal @params[:exercises].first[:name], workout.exercises.first[:name]
-        assert_equal @params[:exercises].first[:duration], workout.exercises.first[:duration]
-      end
-
-      it 'should return errors if workout params were not correct' do
-        @params[:name] = ""
-        put "#{trainer_url}/#{@workout.id}", params: { workout: @params }
-
-        json = JSON.parse(@response.body)
-        assert_response 422
-
-        expected_response = {"name" => ["can't be blank"]}
-        assert_equal expected_response, json['errors']
-      end
-
-      it 'should return errors if workout does not exist' do
-        put "#{trainer_url}/-1", params: { workout: @params }
-
-        json = JSON.parse(@response.body)
-        assert_response 404
-
-        expected_response = "Workout with id -1 was not found"
-        assert_equal expected_response, json['errors']
-      end
-    end
-=end
   end
 end
