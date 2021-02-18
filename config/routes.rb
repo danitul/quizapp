@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      resources :questions, only: [:show] do
+      resources :questions, only: [:index] do
         put 'answer/:answer_id', to: 'questions#update'
       end
       namespace :admins do
