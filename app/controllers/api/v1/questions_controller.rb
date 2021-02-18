@@ -12,6 +12,15 @@ class Api::V1::QuestionsController < ApplicationController
     end
   end
 
+  def update
+    if @current_user.answer_question(params[:question_id], params[:answer_id])
+      render json: @current_user, status: 201
+    else
+      message = "Question with id #{params[:question_id]} and/or Answer with id #{params[:answer_id]} don't match or were not found"
+      render json: { errors: message }, status: 404
+    end
+  end
+
   private
 
   def check_user

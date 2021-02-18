@@ -7,8 +7,13 @@ class User < ApplicationRecord
     User.create(uid: SecureRandom.uuid)
   end
 
-  def answer_question(question, answer)
-    UserAnswer.create(user: self, question: question, answer: answer)
+  def answer_question(question_id, answer_id)
+    question = Question.find_by(id: question_id)
+    if question && question.answers.map(&:id).include?(answer_id.to_i)
+      UserAnswer.create(user: self, question_id: question_id, answer_id: answer_id)
+    else
+      nil
+    end
   end
 
   # returns the next unanswered question,

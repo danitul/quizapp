@@ -32,19 +32,19 @@ describe User do
     end
 
     it 'should return the next available question correctly' do
-      user.answer_question(question1, answers_q1.first)
+      user.answer_question(question1.id, answers_q1.first.id)
       assert_equal question2.id, user.next_question.id
     end
 
     it 'should be idempotent, as in it should return the same question even if called multiple times' do
-      user.answer_question(question1, answers_q1.first)
+      user.answer_question(question1.id, answers_q1.first.id)
       assert_equal question2.id, user.next_question.id
       assert_equal question2.id, user.next_question.id
     end
 
     it 'should return no question when there are no more questions to answer' do
-      user.answer_question(question1, answers_q1.first)
-      user.answer_question(question2, answers_q2.first)
+      user.answer_question(question1.id, answers_q1.first.id)
+      user.answer_question(question2.id, answers_q2.first.id)
       assert_nil user.next_question
     end
   end
