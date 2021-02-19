@@ -4,9 +4,9 @@ class Api::V1::Admins::UsersControllerTest < ActionDispatch::IntegrationTest
   describe 'Api::V1::Admins::UsersController' do
     let (:url) { "/api/v1/admins/users" }
 
-    let (:user1) { create(:user, uid: SecureRandom.uuid) }
-    let (:user2) { create(:user, uid: SecureRandom.uuid) }
-    let (:admin) { create(:user, uid: SecureRandom.uuid, is_admin: true)}
+    let (:user1) { create(:user) }
+    let (:user2) { create(:user) }
+    let (:admin) { create(:user, is_admin: true)}
 
     let (:answers_q1) { build_list(:answer, Question::MIN_ANSWERS) }
     let (:question1) { create(:question, answers: answers_q1) }

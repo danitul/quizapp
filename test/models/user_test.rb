@@ -16,7 +16,7 @@ describe User do
   end
 
   describe 'next question' do
-    let (:user) { create(:user, uid: SecureRandom.uuid) }
+    let (:user) { create(:user) }
 
     let (:answers_q1) { build_list(:answer, Question::MIN_ANSWERS) }
     let (:question1) { create(:question, answers: answers_q1) }

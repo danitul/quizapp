@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :user do
-    sequence(:uid) { |n| "user#{n}" }
+    sequence(:uid) { SecureRandom.uuid }
   end
 end

@@ -4,7 +4,7 @@ class Api::V1::QuestionsControllerTest < ActionDispatch::IntegrationTest
   describe 'Api::V1::QuestionsController' do
     let (:url) { "/api/v1/questions" }
 
-    let (:user) { create(:user, uid: SecureRandom.uuid) }
+    let (:user) { create(:user) }
 
     let (:answers_q1) { build_list(:answer, Question::MIN_ANSWERS) }
     let (:question1) { create(:question, answers: answers_q1) }

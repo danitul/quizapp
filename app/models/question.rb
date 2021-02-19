@@ -13,4 +13,11 @@ class Question < ApplicationRecord
       errors.add(:answers, "A question must have between #{MIN_ANSWERS} and #{MAX_ANSWERS} answers only")
     end
   end
+
+  # we reset all answers before adding all the current ones again.
+  # of course, this would require to change if we would like to be able to update answers and keep the old ids for the user answers
+  def update_with_answers(params)
+    self.answers = []
+    self.assign_attributes(name: params[:name], answers_attributes: params[:answers])
+  end
 end
